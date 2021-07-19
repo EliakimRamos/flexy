@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Image{% endblock %}
+
+{% block body %}
+    <h1 class="text-center p-4 mt-3">Cadastro Imagem</h1>
+
+    {{ include('image/_form.html.twig') }}
+
+    <a href="{{ path('image_index') }}" class="btn btn-secondary mt-2">Voltar para listagem</a>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product index{% endblock %}
+
+{% block body %}
+    <h1 class="text-center p-4 mt-3">Product index</h1>
+
+    <table class="kim table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Price</th>
+                <th scope="col">Description</th>
+                <th scope="col">Stock</th>
+                <th scope="col">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.title }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.stock }}</td>
+                <td>
+                    <a href="{{ path('product_show', {'id': product.id}) }}" class="btn btn-info" >Visualizar</a>
+                    <a href="{{ path('product_edit', {'id': product.id}) }}" class="btn btn-primary" >Editar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('product_new') }}"class="btn btn-primary mb-3">Create new</a>
+
+
+    <script>
+       var dataTable = new DataTable("table");
+    </script>
+{% endblock %}

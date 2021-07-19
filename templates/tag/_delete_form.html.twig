@@ -1,0 +1,4 @@
+<form method="post" class="mt-2" action="{{ path('tag_delete', {'id': tag.id}) }}" onsubmit="return confirm('Você Tem certeza que quer Excluir esse Item?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ tag.id) }}">
+    <button class="btn btn-danger">Excluir</button>
+</form>

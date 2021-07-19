@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Image index{% endblock %}
+
+{% block body %}
+    <h1 class="text-center p-4 mt-3">Image index</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Path</th>
+                <th scope="col">Titulo</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for image in images %}
+            <tr>
+                <td>{{ image.id }}</td>
+                <td>{{ image.name }}</td>
+                <td>{{ image.path }}</td>
+                <td>{{ image.title }}</td>
+                <td>
+                    <a href="{{ path('image_show', {'id': image.id}) }}"class="btn btn-info" >Visualizar</a>
+                    <a href="{{ path('image_edit', {'id': image.id}) }}"class="btn btn-primary" >Editar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('image_new') }}" class="btn btn-primary mb-3">Create new</a>
+
+    <script>
+       var dataTable = new DataTable("table");
+    </script>
+{% endblock %}
